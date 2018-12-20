@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<div class="row" style="margin-left:0px; margin-right: 0px;">
+	<div class="col-md-3"></div>
+	<div class="col-xs-12 col-md-6">
+		<div class="card">
+			<div class="card-body card-block" style="padding:25px;">
+				<h3 class="text-center">Log In</h3>
+				<br>
+				<form method="POST">
+					{%csrf_token%}
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" max-length="100" id="id_username" name="username" placeholder="Username" class="form-control" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">	
+							<input type="password" max-length="100" id="id_password" name="password" placeholder="Password" class="form-control" required>
+						</div>
+					</div>
+					<div class="text-center">
+						<button style="padding-left:25px; padding-right:25px;" type="submit" class="btn btn-success">Login</button>				
+					</div>
+				</form>
+				<br>
+				<div class="text-center">
+					Don't have an account? <a href="{%url 'signup'%}">Sign Up</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+
+{% block title %}Form{% endblock %}
+
+{% block content %}
+
+<div class="row" style="margin-left:0px; margin-right: 0px;">
+	<div class="col-md-2"></div>
+	<div class="col-xs-12 col-md-8">
+		<div class="card">
+			<div class="card-body card-block">
+				<form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+					
+					
+					<div class="row form-group">
+						<div class="col col-md-3"><img style="border-radius:100%; width: 80px;" src="{{request.user.avatar}}"></div>
+						<div class="col-12 col-md-9" style="padding-top: 16px;">
+							<strong><H2> UNIVERSAL HEALTH RECORD SOFTWARE </H2></strong>
+						</div>
+					</div>
+
+					{%csrf_token%}
+					<hr>
+					<div class="card danger text-center" style="background-color:#bacfef; padding-top:8px;"> <h5><B> Patient Details </B></h5> </div>
+					<br>
+					<div class="row form-group">
+						<div class="col col-md-2"> <label for="id_name" class=" form-control-label">Patient's Name:</label></div>
+						<div class="col col-md-4"><input type="text" id="id_name" name="name" placeholder="Enter patient's name" class="form-control" required></div>
+						<div class="col-12 col-md-1"></div>
+						<div class="col-12 col-md-1"><label for="id_gender" class=" form-control-label"> Gender:</label></div>
+						<div class="col-12 col-md-4">
+							<select name="gender" id="id_gender" class="form-control">
+								<option value="">Select</option>
+								{%for gender in genders%}
+								<option value="{{gender}}">{{gender}}</option>
+								{%endfor%}      
+							</select>
+						</div>
+					</div>
+					<br>
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_father_husband_name" class=" form-control-label">Father/Husband Name:</label></div>
+						<div class="col-12 col-md-4"><input type="text" id="id_father_husband_name" name="father_husband_name" placeholder="Enter patient's name" class="form-control" required></div>
+						<div class="col-12 col-md-1"></div>
+						<div class="col col-md-1"><label for="id_age" class=" form-control-label">Age:</label></div>
+						<div class="col-12 col-md-4 input-group">	
+							<input type="text" max-length="10" id="id_age" name="age" placeholder="" class="form-control" required>
+						</div>
+					</div>
+
+					<div class="card danger text-center" style="background-color:#bacfef; padding-top:8px;"> <h5><B> Patient Address & Contact </B></h5> </div>
+					<br>
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_email" class=" form-control-label">Email Address:</label></div>
+						<div class="col-12 col-md-4">
+							<input type="email" id="id_email" name="email" placeholder="Enter Email" class="form-control" required>
+							<small class="help-block form-text">Please enter patients email</small>
+						</div>
+						<div class="col-12 col-md-1"></div>
+						<div class="col col-md-1"><label for="id_contact" class=" form-control-label">Contact:</label></div>
+						<div class="col-12 col-md-4 input-group">	
+							<input type="text" max-length="10" id="id_contact" name="contact" placeholder="Enter Here" class="form-control" required>
+						</div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_country" class=" form-control-label">Country:</label></div>
+						<div class="col-12 col-md-4">
+							<select name="country" id="id_country" class="form-control" required>
+								<option value="">Select Country</option>
+								{%for country in countries%}
+								<option value="{{country.id}}">{{country.name}}</option>
+								{%endfor%}      
+							</select>
+						</div>
+						<div class="col-12 col-md-1"></div>
+						<div class="col col-md-1"><label for="id_state" class=" form-control-label">State:</label></div>
+						<div class="col-12 col-md-4">
+							<select name="states" id="id_state" class="form-control" required>
+								<option value="0">Select State</option>   
+							</select>
+						</div>
+					</div>
+
+					<div class="row form-group">
+
+					</div>
+
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_city"  class=" form-control-label">City:</label></div>
+						<div class="col-12 col-md-4">
+							<select name="city" id="id_city" class="form-control" required>
+								<option value="0">Select City</option>
+							</select>
+						</div>
+						<div class="col-12 col-md-1"></div>
+						<div class="col col-md-1"><label for="id_pin" class=" form-control-label">Pin:</label></div>
+						<div class="col-12 col-md-4"><input type="text" id="id_pin" name="pin" placeholder="Pin Code" class="form-control" required></div>
+					</div>
+
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_address" class=" form-control-label"> Address:</label></div>
+						<div class="col-12 col-md-10"><textarea name="address" id="id_address" rows="3" placeholder="Enter Address Here" class="form-control" required></textarea></div>
+					</div>
+
+					<div class="card danger text-center" style="background-color:#bacfef; padding-top:8px;"> <h5><B>  Patient's Identity </B></h5> </div>
+					<br>
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_epic" class=" form-control-label"> EPIC No:</label></div>
+						<div class="col-12 col-md-4">
+							<input type="text"  id="id_epic" name="epic" placeholder="" class="form-control" required>
+						</div>
+						<div class="col-12 col-md-1"></div>
+						<div class="col col-md-1"><label for="id_adhaar" class=" form-control-label">Adhaar No:</label></div>
+						<div class="col-12 col-md-4 input-group">	
+							<input type="text" max-length="12" id="id_adhaar" name="adhaar" placeholder="" class="form-control" required>
+						</div>
+
+					</div>
+
+					<div class="card danger text-center" style="background-color:#bacfef; padding-top:8px;"> <h5><B>  Doctor & Fees Details </B></h5> </div>
+					<br>
+
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_doctor" class=" form-control-label"> Doctor:</label></div>
+						<div class="col-12 col-md-4">
+							<select name="doctor" id="id_doctor" class="form-control">
+								<option value="">Select</option>
+								{%for doctor in doctors%}
+								<option value="{{doctor}}">{{doctor}}</option>
+								{%endfor%}      
+							</select>
+						</div>
+
+						<div class="col-12 col-md-1"></div>
+						<div class="col col-md-1"><label for="id_fees" class=" form-control-label">Fees:</label></div>
+						<div class="col-12 col-md-4 input-group">	
+							<input type="text" max-length="10" id="id_fees" name="fees" placeholder="" class="form-control" required>
+						</div>
+
+					</div>
+
+
+					<div class="row">
+					<div class="col-xs-3 col-sm-3"></div>
+					<div class="col-xs-6 col-sm-6 text-center">
+						<button type="submit" name="submit" class="btn btn-success" onclick="extraval();">Submit</button>
+					</div>
+					<div class="col-xs-3 col-sm-3"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
+{% endblock %}
+{%block script%}
+<script type="text/javascript">
+
+   $("#id_state").prop('disabled',true);
+
+    $("#id_country").on('change',function(){
+        url = "{%url 'api_cities'%}"
+        text1 = $('#id_country').val();
+        if(text1===""){
+            $("#id_state").prop('disabled',true);
+            $("#id_state").empty()
+            $("#id_state").append('<option value="">Select State</option>');
+
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "{%url 'api_states'%}",
+                data: {'country':text1,csrfmiddlewaretoken:'{{ csrf_token }}'},
+                success: function(states){
+                    $("#id_state").prop('disabled',false);
+                    $("#id_state").empty()
+                    $("#id_state").append('<option value="">Select State</option>');
+                    for(state in states){
+                        $("#id_state").append('<option value="'+states[state]['id']+'">'+states[state]['name']+'</option>');
+                    }
+                }
+            });
+        }
+    });
+
+    $("#id_city").prop('disabled',true);
+    $("#id_state").on('change',function(){
+        url = "{%url 'api_cities'%}"
+        text = $('#id_state').val();
+        if(text===""){
+            $("#id_city").prop('disabled',true);
+            $("#id_city").empty()
+            $("#id_city").append('<option value="">Select City</option>');
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "{%url 'api_cities'%}",
+                data: {'state':text,csrfmiddlewaretoken:'{{ csrf_token }}'},
+                success: function(cities){
+                    $("#id_city").prop('disabled',false);
+                    $("#id_city").empty()
+                    $("#id_city").append('<option value="">Select City</option>');
+                    for(city in cities){
+                        $("#id_city").append('<option value="'+cities[city]['id']+'">'+cities[city]['name']+'</option>');
+                    }
+                }
+            });
+        }
+    });
+
+</script>
+{%endblock%}
