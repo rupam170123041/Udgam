@@ -1,0 +1,61 @@
+{%extends 'layouts/blank_master.html'%}
+{%load static%}
+{%block title%}Arogya | Login{%endblock%}
+`
+{%block content%}
+<div class="margin-auto text-center">
+	<img src="{% static 'images/arogya.png'%}" style="width:180px" alt="Arogya Logo"/>
+</div>
+<br>
+<div class="row" style="margin-left:0px; margin-right: 0px;">
+	<div class="col-md-3"></div>
+	<div class="col-xs-12 col-md-6">
+		<div class="card">
+			<div class="card-body card-block" style="padding:25px;">
+				<h3 class="text-center"><b>Log In</b></h3>
+				<br>
+				{%if messages|length > 0%}
+				<div>
+					{%for message in messages%}
+					<div class="{{message.0}}">- {{message.1}}</div>
+					{%endfor%}
+				</div>
+				<br>
+				{%endif%}
+				<form method="POST">
+					{%csrf_token%}
+					<div class="form-group">
+						<div class="input-group">
+							<input type="email" max-length="100" id="email" name="email" placeholder="Email Address" class="form-control" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">	
+							<input type="password" max-length="100" id="password" name="password" placeholder="Password" class="form-control" required>
+						</div>
+					</div>
+					<div class="text-center">
+						<button style="padding-left:25px; padding-right:25px;" type="submit" class="btn btn-success">Login</button>				
+					</div>
+					
+				</form>
+				<br>
+				<div class="row text-center">
+					<div class="col-4"><hr></div>
+					<div class="col-4"><hr></div>
+					<div class="col-4"><hr></div>
+				</div>
+				<br>
+				
+				<div class="text-center">
+					Don't have an account? <a href="{%url 'signup'%}">Sign Up</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3"></div>
+</div>
+
+
+{%endblock%}
+

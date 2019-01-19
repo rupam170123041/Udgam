@@ -1,0 +1,47 @@
+.navbar{
+            width:100%;
+            height:100px;
+            background-color: transparent;
+            position: fixed;
+            top:0;
+            align-items: baseline;
+            z-index: 50;
+            
+        }
+        .navbar-list{
+            float:right;
+            display: inline-block;
+            margin-right: 10%;
+            align-items: baseline;
+            z-index: 50;
+        }
+
+        .navbar-list>ul>li{
+            text-decoration: none;
+            color:ghostwhite;
+            list-style: none;
+            display: inline-block;
+            margin-right: 30px;
+            font-family: sans-serif;
+            font-weight: 100;
+            align-items: baseline;
+            margin-top: 30px;
+            z-index: 50;
+        }
+        
+        .navbar-list>ul>li>a{
+            color:ghostwhite;
+            text-decoration: none;
+            z-index: 50;
+            position: inherit;
+        }
+
+#logo-main{
+            font-family: roboto;
+            font-size: 42px;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10%;
+            color:ghostwhite;
+            padding-top: 15px;
+        }

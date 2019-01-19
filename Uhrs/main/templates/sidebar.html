@@ -1,0 +1,10 @@
+<li>
+	<a href="#"><b>User Portal</b> </a>
+</li>
+<li id="user_dash">
+	<a href="{%url 'appointment'%}" ><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+</li>
+<li class="menu-title">{{request.user.first_name}} {{request.user.last_name}}</li><!-- /.menu-title -->
+<li id="user_work-past"><a href="{%url 'appointment_details'%}"><i class="menu-icon fa fa-desktop"></i> Past Appointments</a></li>
+<li id="user_work-payment"><a href="{%url 'payment'%}"><i class="menu-icon fa fa-money"></i> Payment</a></li>
+

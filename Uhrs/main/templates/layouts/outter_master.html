@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	{%load static%}
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="static/hospice/img/favicon.png" type="image/png">
+	<title>{%block title%}{%endblock%}</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="static/hospice/css/bootstrap.css">
+	<link rel="stylesheet" href="static/hospice/vendors/linericon/style.css">
+	<link rel="stylesheet" href="static/hospice/css/font-awesome.min.css">
+	<link rel="stylesheet" href="static/hospice/vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="static/hospice/vendors/lightbox/simpleLightbox.css">
+	<link rel="stylesheet" href="static/hospice/vendors/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="static/hospice/vendors/animate-css/animate.css">
+	<link rel="stylesheet" href="static/hospice/vendors/jquery-ui/jquery-ui.css">
+	<link rel="stylesheet" href="{%static 'bootstrap-4.1.3/css/bootstrap.min.css'%}">
+	<!-- main css -->
+	<link rel="stylesheet" href="static/hospice/css/style.css">
+	<link rel="stylesheet" href="static/hospice/css/responsive.css">
+	
+</head>
+
+<body>
+
+
+
+	<!--================Header Menu Area =================-->
+	<header class="header_area">
+		<div class="top_menu row m0">
+			<div class="container">
+				<div class="float-left">
+					<ul class="left_side">
+						<li>
+							<a href="#">
+								<i class="fa fa-facebook-f"></i>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-twitter"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="#">
+						<img src="static/images/arogya.png" style="width: 100px" alt="">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					 aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<div class="row ml-0 w-100">
+							<div class="col-lg-12 pr-0">
+								<ul class="nav navbar-nav center_nav pull-right">
+									<li class="nav-item active">
+										<a class="nav-link" href="#">Home</a>
+									</li>
+									<li class="nav-item ">
+										<a class="nav-link" href="{%url 'user_login'%}">Login</a>
+									</li>
+									<li class="nav-item ">
+										<a class="nav-link" href="{%url 'signup'%}">Sign Up</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!--================Header Menu Area =================-->
+
+	<!--================ Home Banner Area =================-->
+
+	<!--================ End Home Banner Area =================-->
+
+	<!--================ Procedure Category Area =================-->
+
+	{%block content%}
+	{%endblock%}
+
+	<!--================ end recent-blog Area =================-->
+
+	<!--================ start footer Area =================-->
+	<footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6">
+					<img src="{%static 'images/sb.png'%}" style="width: 200px;" class="img-rounded">
+					<br><br>
+					<h3>Sunny Kumar<br> 8011991494<h3>
+				</div>
+				<div class="col-lg-3  col-md-6">
+					<img src="{%static 'images/rupam.png'%}" style="width: 200px">
+					<br><br>
+					<h3>Rupam Sahu<br> 9101250756<h3>
+				</div>
+				<div class="col-lg-3  col-md-6">
+					<img src="{%static 'images/rupesh.png'%}" style="width: 200px">
+					<br><br>
+					<h3>Rupes Yadav<br> 9079732143<h3>
+				</div>
+				<div class="col-lg-3  col-md-6">
+					<img src="{%static 'images/sid.png'%}" style="width: 200px ">
+					<br><br>
+					<h3>Siddhant Sinha<br> 7896668983<h3>
+				</div>
+			</div>
+
+			
+			</div>
+		</div>
+	</footer>
+	<!--================ End footer Area =================-->
+
+
+
+	<!--================ Optional JavaScript =================-->
+	<!--================ jQuery first, then Popper.js, then Bootstrap JS =================-->
+	
+	<script src="static/hospice/js/jquery-3.2.1.min.js"></script>
+	<script src="static/hospice/js/popper.js"></script>
+	<script src="static/hospice/js/bootstrap.min.js"></script>
+	<script src="static/hospice/vendors/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="static/hospice/vendors/isotope/isotope-min.js"></script>
+	<script src="static/hospice/vendors/owl-carousel/owl.carousel.min.js"></script>
+	<script src="static/hospice/js/jquery.ajaxchimp.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+	<script src="static/hospice/js/mail-script.js"></script>
+	<script src="static/hospice/js/custom.js"></script>
+
+</body>
+
+</html>

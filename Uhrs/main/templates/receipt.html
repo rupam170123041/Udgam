@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'layouts/clinic_master.html' %}
 
 {% block title %} Receipt {% endblock %}
     
@@ -102,7 +102,7 @@
 {%block content%}
 
 <div class="float-right">
-    <a href="/accounts/logout"> logout </a>
+    <a href="logout"> logout </a>
 </div>
 
     <div class="invoice-box">
@@ -116,7 +116,7 @@
                             </td>
                             
                             <td>
-                                Doctor Name : <b>{{patient.doctor}}</b><br>
+                                Doctor Type : <b>{{patient.doctor}}</b><br>
                                 Registered at: <b>{{patient.created_at}}</b><br>
                             </td>
                         </tr>
@@ -171,7 +171,7 @@
         <br>
         <br>
         <div class="text-center">
-            <a href="/accounts/profile"> Fill next form </a>
+            <a href="/appointment"> Fill next form </a>
         </div>
         
         

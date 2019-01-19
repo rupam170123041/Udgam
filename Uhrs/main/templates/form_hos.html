@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'layouts/clinic_master.html' %}
 
 {% block title %}Form{% endblock %}
 
@@ -15,7 +15,7 @@
 					<div class="row form-group">
 						<div class="col col-md-3"><img style="border-radius:100%; width: 80px;" src="{{request.user.avatar}}"></div>
 						<div class="col-12 col-md-9" style="padding-top: 16px;">
-							<strong><H2> UNIVERSAL HEALTH RECORD SOFTWARE </H2></strong>
+							<strong><H2><b>&nbsp; APPOINTMENT &nbsp; FORM </b></H2></strong>
 						</div>
 					</div>
 
@@ -40,7 +40,7 @@
 					<br>
 					<div class="row form-group">
 						<div class="col col-md-2"><label for="id_father_husband_name" class=" form-control-label">Father/Husband Name:</label></div>
-						<div class="col-12 col-md-4"><input type="text" id="id_father_husband_name" name="father_husband_name" placeholder="Enter patient's name" class="form-control" required></div>
+						<div class="col-12 col-md-4"><input type="text" id="id_father_husband_name" name="father_husband_name" placeholder="" class="form-control" required></div>
 						<div class="col-12 col-md-1"></div>
 						<div class="col col-md-1"><label for="id_age" class=" form-control-label">Age:</label></div>
 						<div class="col-12 col-md-4 input-group">	
@@ -122,7 +122,7 @@
 					<br>
 
 					<div class="row form-group">
-						<div class="col col-md-2"><label for="id_doctor" class=" form-control-label"> Doctor:</label></div>
+						<div class="col col-md-2"><label for="id_doctor" class=" form-control-label"> Doctor Type:</label></div>
 						<div class="col-12 col-md-4">
 							<select name="doctor" id="id_doctor" class="form-control">
 								<option value="">Select</option>
@@ -138,6 +138,14 @@
 							<input type="text" max-length="10" id="id_fees" name="fees" placeholder="" class="form-control" required>
 						</div>
 
+					</div>
+					<div class="row form-group">
+						<div class="col col-md-2"><label for="id_clinic"  class=" form-control-label">Clinic:</label></div>
+						<div class="col-12 col-md-4">
+							<select name="clinic" id="id_clinic" class="form-control" required>
+								<option value="0">Select Clinic/Hospital</option>
+							</select>
+						</div>
 					</div>
 
 
@@ -158,6 +166,8 @@
 {% endblock %}
 {%block script%}
 <script type="text/javascript">
+
+	$("#user_dash").addClass('active');
 
    $("#id_state").prop('disabled',true);
 
@@ -207,6 +217,33 @@
                     $("#id_city").append('<option value="">Select City</option>');
                     for(city in cities){
                         $("#id_city").append('<option value="'+cities[city]['id']+'">'+cities[city]['name']+'</option>');
+                    }
+                }
+            });
+        }
+    });
+
+
+     $("#id_clinic").prop('disabled',true);
+    $("#id_city").on('change',function(){
+        url = "{%url 'api_clinics'%}"
+        text = $('#id_city').val();
+        if(text===""){
+            $("#id_clinics").prop('disabled',true);
+            $("#id_clinics").empty()
+            $("#id_clinics").append('<option value="">Select City</option>');
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "{%url 'api_clinics'%}",
+                data: {'city':text,csrfmiddlewaretoken:'{{ csrf_token }}'},
+                success: function(clinics){
+                    $("#id_clinic").prop('disabled',false);
+                    $("#id_clinic").empty()
+                    $("#id_clinic").append('<option value="">Select City</option>');
+                    for(clinic in clinics){
+                        $("#id_clinic").append('<option value="'+clinics[clinic]['id']+'">'+clinics[clinic]['name']+'</option>');
                     }
                 }
             });

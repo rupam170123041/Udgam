@@ -1,0 +1,33 @@
+{%extends 'layouts/blank_master.html'%}
+{%load static%}
+{%block title%}{{title}}{%endblock%}
+
+{%block content%}
+<div class="text-center">
+	<img src="{% static 'images/logow.png'%}" style="width:140px" alt="Techniche Logo"/>
+	<a style="position: absolute; z-index:2; right:0" href="{%url 'logout'%}"> 
+		<img src="{% static 'images/logout.png'%}" style="width:50px">&nbsp;&nbsp;
+	</a>
+</div>
+<br>
+<br>
+
+<div class="row" style="margin-left:0px; margin-right: 0px; ">
+	<div class="col-md-4"></div>
+	<div class="col-xs-12 col-md-4">
+
+		<div class="card">
+			<div class="card-header {{background}}">
+				<strong class="card-title text-light">{{head}}</strong>
+			</div>
+			<div class="card-body">
+			<p class="card-text ">{%autoescape off%}{{body}}{%endautoescape%}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	{%endblock%}
+

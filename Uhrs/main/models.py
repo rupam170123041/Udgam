@@ -7,14 +7,20 @@ from django.utils.translation import ugettext as translate
 from django.utils.timezone import now
 
 
+
+
 GENDER_CHOICES = (
 	('Male' , 'Male'),
 	('Female' , 'Female'),
 
 )
 
-DOCTOR_CHOICES = (
-	('A.k_Sharma' , 'A.K Sharma'),
+DOCTYPE_CHOICES = (
+	('Cardiologist' , 'Cardiologist'),
+	('Dentist' , 'Dentist'),
+	('General_Physician' , 'General Physician'),
+	('ENT_Specialist' , 'ENT Specialist'),
+	('Obstetrics' , 'Obstetrics'),
 )
 
 
@@ -72,6 +78,17 @@ class SoftDeleteMixin(models.Model):
 			kwargs['disable_auto_updated_at'] = True
 		self.save(**kwargs)
 
+class User(AbstractUser,AutoCreatedUpdatedMixin,SoftDeleteMixin):
+	is_client = models.BooleanField(default=False)
+	is_hospo = models.BooleanField(default=False)
+	docto_id = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4)
+	
+
+	def save(self, *args, **kwargs):
+		super(User, self).save(*args, **kwargs)
+		self.docto_id = "docto19"+str(10000+int(self.id)) 
+		super(User, self).save(*args, **kwargs)
+
 class Country(AutoCreatedUpdatedMixin,SoftDeleteMixin):
 	name = models.CharField(max_length=100)
 
@@ -106,13 +123,41 @@ class City(AutoCreatedUpdatedMixin,SoftDeleteMixin):
 		}
 
 
+class Clinic(AutoCreatedUpdatedMixin,SoftDeleteMixin):
+	user = models.ForeignKey(User, on_delete=models.CASCADE , default=None)
+	name = models.CharField(max_length=50, blank=False , default=0)
+	contact = models.CharField(max_length=50, blank=False , default=0)
+	city = models.ForeignKey(City,on_delete=models.CASCADE, blank=False  , related_name='city_clinic', default=None)
+	address = models.CharField(max_length=50, blank=False , default=0)
+	fees = models.CharField(max_length=50, blank=False , default=0)
+
+	def __str__(self):
+		return self.name + " "+ self.city.name
+
+	def as_dict(self):
+		return {
+			"name":self.name,
+			"id":self.id
+		}
+
+class Doctor(AutoCreatedUpdatedMixin,SoftDeleteMixin):
+	name = models.CharField(max_length=50, blank=False , default=0)
+	clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE , default=None , related_name='doc_clinic')
+	stype = models.CharField(max_length=100, blank=False , choices=DOCTYPE_CHOICES)
+	
+
+	def __str__(self):
+		return self.name + " "+ self.stype + " " + self.clinic.name
+
 class Patient(AutoCreatedUpdatedMixin,SoftDeleteMixin):
+	user = models.ForeignKey(User, on_delete=models.CASCADE , default=None)
 	reg_id = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4)
 	name = models.CharField(max_length=50, blank=False)
 	age = models.CharField(max_length=50, blank=False ,default=0)
-	fees = models.CharField(max_length=50, blank=False , default=0)
+	
 	gender = models.CharField(max_length=100, blank=False , choices=GENDER_CHOICES)
-	doctor = models.CharField(max_length=100, blank=False , choices=DOCTOR_CHOICES)
+	clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE , default=None , related_name='user_clinic')
+	doctor = models.CharField(max_length=100, blank=False , choices=DOCTYPE_CHOICES)
 	father_husband_name = models.CharField(max_length=50, blank=False)
 	contact = models.CharField(max_length=20, blank=False)
 	adhaar = models.CharField(max_length=12, blank=False)
@@ -121,8 +166,10 @@ class Patient(AutoCreatedUpdatedMixin,SoftDeleteMixin):
 	email = models.EmailField(blank=False)
 	address = models.CharField(max_length=100, blank=False)
 	city = models.ForeignKey(City,on_delete=models.CASCADE, blank=False  , related_name='city', default=None)
+	is_accepted = models.IntegerField(default=0)
 
 	def save(self, *args, **kwargs):
 		super(Patient, self).save(*args, **kwargs)
-		self.reg_id = "UHRS"+str(12000+int(self.id))
+		self.reg_id = "arogya19"+str(12000+int(self.id)) 
 		super(Patient, self).save(*args, **kwargs)
+

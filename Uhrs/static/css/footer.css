@@ -1,0 +1,25 @@
+footer{
+	padding:20px 0px;
+	background-color: #24363E;
+}
+.byline{
+	color:#999;
+}
+.footer-link{
+	color:#c4c4c4;
+	transition: color 0.6s;
+}
+.footer-link:hover{
+	color:white;
+}
+.footer-nav li{
+	display:inline;
+	padding:5px;
+}
+footer hr{
+	width:80%;
+	background:#777;
+	margin:10px 10%;
+	height: 1px;
+
+}
